@@ -3,123 +3,210 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
-        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <meta name="description" content="MBTI기반 자신과 닮은 환경을 추천해주는 테스트 입니다..">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="나와 닮은 자연 테스트">
+    <meta property="og:description" content="나랑 꼭 닮은 자연을 MBTI를 기반으로 추천해주는 테스트입니다.">
+    <meta property="og:image" content=https://likelion-mbti-clone.netlify.app/images/logo.png">
+    <meta property="og:url" content="https://likelion-mbti-clone.netlify.app/">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+          integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body class="container">
+<article class="start">
+    <h1 class="main-title mt-5 text-center">나와 닮음 자연을 찾아봐요!😀😀</h1>
+    <h2 class="sub-title mt-3 text-center">여러분과 맞는 자연을 찾아봐요</h2>
+    <img class="mt-5 my-logo" src="images/logo.png" alt="logo">
+    <div class="start-cover mt-3 mb-3">
+        <button type="button" class="btn-start btn btn-primary" onclick='start();'>테스트 시작하기</button>
+    </div>
+</article>
+<article class="question">
+    <div class="progress mt-5">
+        <div class="progress-bar" role="progressbar" style="width: calc(100/12*1%)"></div>
+    </div>
+    <h2 id="title" class="question-content text-center mt-4 mb-4">문제</h2>
+    <input id="type" type="hidden" value="EI">
+    <div class="rectangle mt-5"></div>
+    <button id="A" type="button" class="btn-answer btn btn-primary pt-5 pb-5">Primary</button>
+    <div class="mid-rectangle"></div>
+    <button id="B" type="button" class="btn-answer btn btn-primary pt-5 pb-5">Primary</button>
+    <div class="rectangle"></div>
+</article>
 
-    <article class="start">
-        <h1 class="mt-5">나랑 똑 닮은 세렝게티 동물은?</h1>
-        <button type="button" class="btn btn-primary mt-5" onclick='start();'>테스트 시작하기</button>
-    </article>
-    <article class="question">
-        <div class="progress mt-5">
-            <div class="progress-bar" role="progressbar" style="width: calc(100/12*11%)" aria-valuenow="25"
-                aria-valuemin="0" aria-valuemax="100"></div>
-        </div>
-        <h2 id="title" class="text-center mt-5">문제 </h2>
-        <input id="type" type="hidden" value="EI">
-        <button id="A" type="button" class="btn btn-primary mt-5">테스트 시작하기</button>
-        <button id="B" type="button" class="btn btn-primary mt-5">테스트 시작하기</button>
+<article class="result">
+    <span class="result-message mt-4 mb-4">나는 무엇과 비슷할까?</span>
+    <div class="rectangle mt-4 mb-4"></div>
+    <img id="img" class=" mt-5" src="images/logo.png" alt="environment">
+    <h2 id="environment" class="text-center mt-4 mb-4">자연환경</h2>
+    <h3 id="explain" class="result-explain text-center mt-4">설명</h3>
+    <div class="rectangle mt-4 mb-4"></div>
+    <span class="share-message mb-4">나의 세렝게티 동물 <strong>공유하기</strong></span>
+</article>
+<!--<article class="logo">-->
+<!--    <img class="mt-5 my-logo" src="images/logo.png" alt="logo">-->
+<!--    <span class="mt-2 text-center copyright-text">2023 - TEST - Like Lion lecture</span>-->
+<!--</article>-->
+<div>
+    <a class="mt-5 banner" href="https://github.com/juhee77/mbti-clone">
+        <img class="github-img" src="images/github.png" alt="my github site">
+    </a>
+    <p class="mt-5 text-center"> @2023 likelion clone coding</p>
+</div>
 
-    </article>
-    <article class="result">
-        <img id="img" class="rounded-circle mt-5" src="lion.jpg" alt="animal">
-        <h2 id='animal' class="text-center mt-5"> 동물이름 </h2>
-        <h3 ic='explain' class="text-center mt-5"> 설명 </h3>
-    </article>
-    <input type="hidden" id="EI" value="0">
-    <input type="hidden" id="SN" value="0">
-    <input type="hidden" id="TF" value="0">
-    <input type="hidden" id="JP" value="0">
-
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+<input type="hidden" id="EI" value="0">
+<input type="hidden" id="SN" value="0">
+<input type="hidden" id="TF" value="0">
+<input type="hidden" id="JP" value="0">
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
         crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
         crossorigin="anonymous"></script>
-    <script>
-        var problemCnt = 12;
-        var num = 1;
-        var q = {
-            1: {"title": "문제 1번", "type": "EI", "A": "E", "B": "I"},
-            2: {"title": "문제 2번", "type": "EI", "A": "E", "B": "I"},
-            3: {"title": "문제 3번", "type": "EI", "A": "E", "B": "I"},
-            4: {"title": "문제 4번", "type": "SN", "A": "S", "B": "N"},
-            5: {"title": "문제 5번", "type": "SN", "A": "S", "B": "N"},
-            6: {"title": "문제 6번", "type": "SN", "A": "S", "B": "N"},
-            7: {"title": "문제 7번", "type": "TF", "A": "T", "B": "F"},
-            8: {"title": "문제 8번", "type": "TF", "A": "T", "B": "F"},
-            9: {"title": "문제 9번", "type": "TF", "A": "T", "B": "F"},
-            10: {"title": "문제 10번", "type": "JP", "A": "J", "B": "P"},
-            11: {"title": "문제 11번", "type": "JP", "A": "J", "B": "P"},
-            12: {"title": "문제 12번", "type": "JP", "A": "J", "B": "P"}
-        }
-        var result = {
-                  "ISTJ": {"animal": "하마", "explain": "하마 설명", "img": "lion.jpg"},
-            "ISFJ": {"animal": "부엉이", "explain": "부엉이 설명", "img": "lion.jpg"},
-            "INFJ": {"animal": "물소", "explain": "물소 설명", "img": "lion.jpg"},
-            "INTJ": {"animal": "치타", "explain": "치타 설명", "img": "lion.jpg"},
-            "ISTP": {"animal": "나무늘보", "explain": "나무늘보 설명", "img": "lion.jpg"},
-            "ISFP": {"animal": "거북이", "explain": "거북이 설명", "img": "lion.jpg"},
-            "INFP": {"animal": "코끼리", "explain": "코끼리 설명", "img": "lion.jpg"},
-            "INTP": {"animal": "침팬지", "explain": "침팬지 설명", "img": "lion.jpg"},
-            "ESTP": {"animal": "악어", "explain": "악어 설명", "img": "lion.jpg"},
-            "ESFP": {"animal": "미어캣", "explain": "미어캣 설명", "img": "lion.jpg"},
-            "ENFP": {"animal": "멋쟁이 사자", "explain": "멋쟁이 사자 설명", "img": "lion.jpg"},
-            "ENTP": {"animal": "태양새", "explain": "태양새 설명", "img": "lion.jpg"},
-            "ESTJ": {"animal": "기린", "explain": "기린 설명", "img": "lion.jpg"},
-            "ESFJ": {"animal": "고릴라", "explain": "고릴라 설명", "img": "lion.jpg"},
-            "ENFJ": {"animal": "카피바라", "explain": "카피바라 설명", "img": "lion.jpg"},
-            "ENTJ": {"animal": "호랑이", "explain": "호랑이 설명", "img": "lion.jpg"}
+<script>
+    var num = 1;
+    var q = {
+        1: {
+            "title": "어떤 사람들과 함께 시간을 보내는 것을 선호하십니까?",
+            "type": "EI",
+            "A": "다양한 사람들과의 사회적 활동을 즐김",
+            "B": "가까운 친구나 가족과 함께하는 것을 선호"
+        },
+        8: {
+            "title": "어떤 환경에서 에너지를 얻으십니까?",
+            "type": "EI",
+            "A": "사람들과 함께하고 활동적인 환경에서 에너지를 얻음",
+            "B": "혼자 있는 시간이 필요하고 자연 속에서 보내는 것을 좋아함"
+        },
+        9: {
+            "title": "어떤 종류의 동기부여를 받을 때 가장 효과적이라고 생각하십니까?",
+            "type": "EI",
+            "A": "칭찬과 인정을 받을 때 동기부여를 더 많이 받음",
+            "B": "자율성과 독립적인 활동을 통해 자신의 성과를 이루는 것에 동기부여를 더 많이 받음"
+        },
+        // 13: { "title": "어떤 종류의 활동을 통해 스트레스를 해소하시나요?", "type": "EI", "A": "운동, 신체 활동, 야외 활동 등으로 스트레스를 해소함", "B": "독서, 명상, 혼자 있는 시간 등을 통해 스트레스를 해소함" },
 
-        }
-        function start() {
-            $(".start").hide();
-            $(".question").show();
-            next();
-        }
-        $("#A").click(function () {
-            var type = $("#type").val();
-            console.log(type);
-            var preValue = $("#" + type).val();
-            console.log(preValue);
-            $("#" + type).val(parseInt(preValue) + 1);
-            next();
-        });
-        $("#B").click(function () {
-            next();
-        });
-        function next() {
-            if (num == problemCnt+1) {
-                $(".question").hide();
-                $(".result").show();
-                var mbti = ""
-                ($("#EI").val() < 2) ? mbti+="I" : mbti+="E";
-                ($("#SN").val() < 2) ? mbti+="N" : mbti+="S";
-                ($("#TF").val() < 2) ? mbti+="F" : mbti+="T";
-                ($("#JP").val() < 2) ? mbti+="P" : mbti+="J";
-                $("#img").attr("src",result[mbti]["img"]);
-                $("#animal").html(result[mbti]["animal"]);
-                $("#explain").html(result[mbti]["explain"]);
+        2: {
+            "title": "주로 어떤 종류의 정보를 받아들이는 것을 좋아하십니까?",
+            "type": "SN",
+            "A": "실제 경험과 사실에 기반한 구체적인 정보를 선호",
+            "B": "추상적인 이론과 개념에 기반한 추상적인 정보를 선호"
+        },
+        7: {
+            "title": "변화에 대한 대처 방식을 알려주세요. 변화를 좋아하시나요, 아니면 안정성과 예측 가능성을 선호하시나요?",
+            "type": "SN",
+            "A": "안정성과 예측 가능성을 중요시함",
+            "B": "새로운 경험과 변화를 즐김"
+        },
+        10: {
+            "title": "사회적인 상호작용에서 어떤 역할을 맡고 싶으십니까?",
+            "type": "SN",
+            "A": "리더십과 지배적인 역할을 선호함",
+            "B": "협력과 조화로운 팀 플레이를 선호함"
+        },
+        // 14: { "title": "어떤 방식으로 정보를 처리하십니까?", "type": "SN", "A": "상세하게 세부사항을 분석하고 이해하는 것을 좋아함", "B": "큰 그림을 파악하고 패턴과 유사성을 인식하는 것을 좋아함" },
 
-            } else {
-                $(".progress-bar").attr('style', 'width: calc(100/' + problemCnt + '*' + num + '%)');
-                $("#title").html(q[num]["title"]);
-                $("#type").val(q[num]["type"]);
-                $("#A").html(q[num]["A"]);
-                $("#B").html(q[num]["B"]);
-                num++;
-            }
-        }
+        3: {
+            "title": "문제를 해결할 때 어떤 방식을 선호하십니까?",
+            "type": "TF",
+            "A": "논리적으로 분석하고 사실에 기반하여 해결하는 것을 좋아함",
+            "B": "직관과 창의성을 발휘하여 다양한 가능성을 고려하는 것을 좋아함"
+        },
+        6: {
+            "title": "주로 무엇에 관심이 있으십니까?",
+            "type": "TF",
+            "A": "과학, 기술, 현실적인 문제 등 사실과 원리에 관심이 많음",
+            "B": "예술, 인문학, 사회 문제 등 창의성과 인간 관계에 관심이 많음"
+        },
+        11: {"title": "어떤 방식으로 결정을 내리십니까?", "type": "TF", "A": "분석과 논리를 기반으로 결정을 내림", "B": "감정과 직관을 기반으로 결정을 내림"},
+        // 15: { "title": "다른 사람들과 의견이 충돌했을 때 어떻게 대처하시나요?", "type": "TF", "A": "자신의 의견을 보호하고 분쟁을 해결하는 것을 선호함", "B": "타협이나 중재를 통해 갈등을 해소하는 것을 선호함" },
 
-    </script>
+        4: {
+            "title": "계획을 세우는 것에 관심이 있으십니까? 아니면 상황에 따라 즉흥적으로 행동하시나요?",
+            "type": "JP",
+            "A": "미리 계획을 세우고 구체적으로 진행하는 것을 선호",
+            "B": "상황에 맞게 유연하게 대처하며 즉흥적으로 행동하는 것을 선호"
+        },
+        5: {
+            "title": "무엇보다도 일정을 따르는 것을 중요시합니까, 아니면 유연하게 일정을 조정하며 흐름에 맡기는 것을 선호하십니까?",
+            "type": "JP",
+            "A": "일정을 따르는 것을 중요하다",
+            "B": "일정을 조정하며 흐름에 맡긴다"
+        },
+        12: {
+            "title": "변화에 대한 대처 방식을 알려주세요. 변화를 좋아하시나요, 아니면 안정성과 예측 가능성을 선호하시나요?",
+            "type": "JP",
+            "A": "안전성과 예측 가능성이 중요하다",
+            "B": "변화를 좋아한다."
+        },
+        // 16: { "title": "어떤 종류의 일정을 선호하십니까??", "type": "JP", "A": "정확하게 계획된 일정과 구체적인 목표를 가진 일정을 선호함", "B": "유연하고 변화에 적응 가능한 일정을 선호함" }
+    }
+    var result = {
+        "ISTJ": {"environment": "호수", "explain": "조용하고 안정적이며 신뢰할 수 있는 존재로서 주변을 지킵니다.", "img": "lake.png"},
+        "ISFJ": {"environment": "숲", "explain": "따뜻하고 풍요로운 환경을 조성하며 다른 이들을 돌보고 지지합니다.", "img": "forest.png"},
+        "INFJ": {"environment": "달", "explain": "고요하고 심원한 내면을 가지며, 깊은 이해와 영감을 주는 존재입니다.", "img": "moon.png"},
+        "INTJ": {"environment": "산: .", "explain": "높은 곳에서 넓은 시야를 갖고 계획을 세우며 목표를 달성합니다", "img": "mountain.png"},
+        "ISTP": {"environment": "바다", "explain": "폭발적인 힘과 함께 조용하고 온화하며, 끊임없이 탐험하고 발견합니다", "img": "ocean.png"},
+        "ISFP": {"environment": "꽃", "explain": "아름다움과 감성을 향유하며 자신의 독특한 색깔을 피어낼 수 있습니다", "img": "flower-pot.png"},
+        "INFP": {
+            "environment": "별",
+            "explain": "꿈꾸는 영감과 섬세한 감수성을 지니며, 따뜻한 빛과 아름다움을 주변에 전달합니다.",
+            "img": "shooting-star.png"
+        },
+        "INTP": {"environment": "우주", "explain": "넓은 지식과 창의적인 사고로 인해 새로운 가능성과 이론을 탐색합니다", "img": "galaxy.png"},
+        "ESTP": {"environment": "폭포", "explain": "활기차고 모험적인 성격으로 자유롭게 흐르며 즉흥적인 행동을 즐깁니다.", "img": "waterfall.png"},
+        "ESFP": {"environment": "해변", "explain": "즐거움과 쾌락을 추구하며 사람들과의 연결과 즉각적인 즐거움을 중시합니다.", "img": "vacations.png"},
+        "ENFP": {"environment": "무지개", "explain": "멋쟁이 활기차고 열정적인 성격으로 자신과 주변을 밝게 비춥니다.", "img": "rainbow.png"},
+        "ENTP": {"environment": "번개", "explain": "통찰력과 재치를 가지며, 아이디어를 번개처럼 빠르게 떠올립니다.", "img": "flash.png"},
+        "ESTJ": {"environment": "산맥", "explain": "견고하고 안정된 리더십으로 주변을 안전하게 이끌어갑니다.", "img": "mountain-range.png"},
+        "ESFJ": {"environment": "해", "explain": "따뜻하고 활기찬 에너지로 주변을 밝히고 다른 이들을 돌봅니다.", "img": "sun.png"},
+        "ENFJ": {"environment": "햇빛", "explain": "온정과 친절로 주변을 밝히며 다른 이들을 동기부여하고 지원합니다.", "img": "sunlight.png"},
+        "ENTJ": {"environment": "불꽃", "explain": "결단력과 리더십으로 주변을 환하게 밝히며 목표 달성을 위해 힘차게 나아갑니다.", "img": "fire.png"}
+
+    }
+
+    function start() {
+        $(".start").hide();
+        $(".question").show();
+        next();
+    }
+
+    $("#A").click(function () {
+        var type = $("#type").val();
+        var preValue = $("#" + type).val();
+        $("#" + type).val(parseInt(preValue) + 1);
+        next();
+    });
+    $("#B").click(function () {
+        next();
+    });
+
+    function next() {
+        if (num == 13) {
+            $(".question").hide();
+            $(".result").show();
+            var mbti = "";
+            ($("#EI").val() < 2) ? mbti += "I" : mbti += "E";
+            ($("#SN").val() < 2) ? mbti += "N" : mbti += "S";
+            ($("#TF").val() < 2) ? mbti += "F" : mbti += "T";
+            ($("#JP").val() < 2) ? mbti += "P" : mbti += "J";
+            $("#img").attr("src", "images/" + result[mbti]["img"]);
+            $("#environment").html(result[mbti]["environment"]);
+            $("#explain").html(result[mbti]["explain"]);
+        } else {
+            $(".progress-bar").attr('style', 'width: calc(100/12*' + num + '%)');
+            $("#title").html(q[num]["title"]);
+            $("#type").val(q[num]["type"]);
+            $("#A").html(q[num]["A"]);
+            $("#B").html(q[num]["B"]);
+            num++;
+        }
+    }
+
+</script>
 </body>
 
 </html>
