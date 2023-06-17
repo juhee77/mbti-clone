@@ -65,15 +65,15 @@ article {
 .btn-answer, .btn-answer:visited, .btn-answer:hover, .btn-answer:active, .btn-answer:focus {
     background-color: #ffffff;
     border:#ffffff;
-    width: 400px;
+    width: 300px;
     margin: 0 auto;
-    font-size: 16px;
+    font-size: 14px;
     color: #000000;
 }
 .btn-answer:hover {
     background-color: rgba(130, 6, 176, 0.47) !important;
     border:#1f1f1f !important;
-    width: 400px;
+    width: 300px;
     margin: 0 auto;
     font-size: 16px;
     color: #ffffff;
@@ -96,13 +96,13 @@ article {
     color: #000000;
 }
 .rectangle {
-    width: 400px;
+    width: 300px;
     height: 8px;
     background-color: #383a43;
     margin: 0 auto;
 }
 .mid-rectangle {
-    width: 400px;
+    width: 300px;
     height: 1px;
     background-color: #383a43;
     margin: 0 auto;
